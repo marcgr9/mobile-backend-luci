@@ -1,8 +1,7 @@
 package ro.marc.meditationBackend
 
 import org.springframework.web.bind.annotation.*
-import ro.marc.backend.messaging.BusinessMessage
-import ro.marc.backend.messaging.BusinessPayload
+import ro.marc.meditationBackend.messaging.BusinessPayload
 import ro.marc.meditationBackend.dto.ChangeLocationDTO
 import ro.marc.meditationBackend.dto.SessionDTO
 import ro.marc.meditationBackend.entity.Session
@@ -40,7 +39,7 @@ class SessionsController(
     @DeleteMapping("/{id}")
     fun chargeback(@PathVariable(value = "id") id: Long): BusinessPayload<Void> {
         sessionsRepo.deleteById(id)
-        return BusinessPayload(BusinessMessage.OK)
+        return BusinessPayload(null)
     }
 
 }
